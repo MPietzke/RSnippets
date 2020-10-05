@@ -16,7 +16,7 @@ This section reports some potential tools to process the data in R.
 ### Split long metabolite names
 Usually you don't want to work with the full database ID but with a shorter metabolite name. To do this you can shorten the obtained metabolite identification at the first or better the second underscore, to keep the derivatisation status
 
-#### Demodata
+#### Generate Demodata
 ```R
 
   library(dplyr)
