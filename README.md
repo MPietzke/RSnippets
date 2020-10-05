@@ -5,7 +5,7 @@
 * [Metabolomics](#metabolomics)
    * [Data processing](#data-processing)
       * [Split long metabolite names](#Split-long-metabolite-names)
-   * [Handling .msp-files](#handling-.msp-files)
+   * [Handling msp-files](#handling-msp-files)
       * [Read msp-files](#read-msp-files)
       * [Plot Spectra from msp-data style](#plot-msp)
       * [msp-Viewer](#msp-viewer)
@@ -67,8 +67,7 @@ Usually you don't want to work with the full database ID but with a shorter meta
    data_sep4 = separate(data, Compound, into = c("Name", "Details"), sep = "_(?=RI:)") 
 ```
 
-### Handling .msp-files
-
+### Handling msp-files
 This section reports some ideas to work with mass spectra (msp) files 
 
 #### Read msp-files
