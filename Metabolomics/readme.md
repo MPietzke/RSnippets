@@ -6,7 +6,8 @@
    * [Split long metabolite names](#Split-long-metabolite-names)
 * [Handling msp-files](#handling-msp-files)
    * [Read msp-files](#read-msp-files)
-   * [Plot Spectra from msp-data style](#Plot-Spectra-from-msp-data-style)
+   * [Convert msp-data style to dataframe](#convert-msp-data-style-to-dataframe
+   * [Plot Spectra from msp-data style](#plot-Spectra-from-msp-data-style)
    * [msp-Viewer](#msp-viewer)
 
 ## Data processing
@@ -144,11 +145,31 @@ if (is.data.frame(msp_as_df) & all(colnames(msp_as_df) == c("Name", "Comments", 
 ```
 [back to top](#table-of-contents)
 
+### Convert msp-data style to dataframe
+This function converts peaklist from msp-style (string) into a dataframe. This can be used to plot the data or to compare different spectra using the "SpectrumSimilarity" function from the OrgMassSpecR package.
+```R
+# example input:
+# peaklist = "60   42;61   33;62    1;66    1;68    4;70   25;71   12;72  110;73  999;74  291;75  103;76   11;77    4;83    1;84   17;85    4;86    7;88    1;89  255;90   21;91   10;98    3;99   77;100   60;101    9;102    1;103    4;114    9;115   95;116   13;117   24;118    3;119    2;130    2;143    3;158   17;159    6;174  252;175   30;176   10;189    5;191    2;207   18;208    3;209    1"
+# usage: peak1 = msp_to_df(peaklist)
+# you can further define the separators used for separating the m/z and the intensities and the one for separating the fields
+
+msp_to_df = function(peaklist, sep_entries = ";", sep_peaks = " ") {
+  spectra_df = tibble("Peaks" = peaklist) %>% 
+    separate_rows(Peaks, sep = sep_entries) %>%     # single row for each pair
+    separate(Peaks, into = c("mz", "intensity"),    # split each row into 2 columns 
+             sep = paste0(sep_peaks, "+"), convert = TRUE) %>% 
+    filter(!is.na(intensity))
+
+  return(spectra_df)
+}
+```
+[back to top](#table-of-contents)
+
 
 ### Plot Spectra from msp-data style
 
 ```R
-	# function: Plots a spectrum from msp format.
+# function: Plots a spectrum from msp format.
 # author: Tobias Opialla
 # required packages: ggplot2
 # expects: string in msp-Format (m/z and intensity separated by space(s), pairs separated by semicolon - e.g.: "60   27;  61   19;  62    1;  65    1;  66    8")
@@ -156,10 +177,10 @@ if (is.data.frame(msp_as_df) & all(colnames(msp_as_df) == c("Name", "Comments", 
 #    mytitle              - "name of the compound shown in the title " (character)
 #    print_plot           - should plot be shown? (TRUE / FALSE)
 #    return_plot          - should plot be exported as ggplot object? (TRUE / FALSE)
-#    return_dataframe     - should the underlying dataframe be exported as struvtured table? (TRUE / FALSE)
+#    return_dataframe     - should the underlying dataframe be exported as structured table? (TRUE / FALSE)
 #    normalize_Intensity  -
 #    upper_limit_mzrange  - allows to set a limit for the x-axis (numeric)
-
+# example data: peaklist = "60   42;61   33;62    1;66    1;68    4;70   25;71   12;72  110;73  999;74  291;75  103;76   11;77    4;83    1;84   17;85    4;86    7;88    1;89  255;90   21;91   10;98    3;99   77;100   60;101    9;102    1;103    4;114    9;115   95;116   13;117   24;118    3;119    2;130    2;143    3;158   17;159    6;174  252;175   30;176   10;189    5;191    2;207   18;208    3;209    1"
 plotspectra=function(stringfromMSP, mytitle="substance", print_plot=T, return_plot=F, 
                      return_dataframe=F, normalize_Intensity=TRUE, upper_limit_mzrange=0){
  #organize error handling
