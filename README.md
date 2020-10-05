@@ -5,9 +5,9 @@
 * [Metabolomics](#metabolomics)
    * [Data processing](#data-processing)
       * [Split long metabolite names](#Split-long-metabolite-names)
-   * [Handling .msp-files](#Handling-.msp-files)
-      * [Import msp-files](#Import-msp-files)
-      * [plot spectra from msp-style](#plot-msp)
+   * [Handling .msp-files](#handling-.msp-files)
+      * [Read msp-files](#read-msp-files)
+      * [Plot Spectra from msp-data style](#plot-msp)
       * [msp-Viewer](#msp-viewer)
 
 ## Metabolomics
@@ -144,7 +144,7 @@ if (is.data.frame(msp_as_df) & all(colnames(msp_as_df) == c("Name", "Comments", 
 }
 ```
 
-#### Plot Spectra from data style
+#### Plot Spectra from msp-data style
 
 ```R
 	# function: Plots a spectrum from msp format.
