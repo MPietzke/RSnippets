@@ -66,6 +66,7 @@ Usually you don't want to work with the full database ID but with a shorter meta
   # Clearly this only works when "_RI:" is there   
    data_sep4 = separate(data, Compound, into = c("Name", "Details"), sep = "_(?=RI:)") 
 ```
+[Back to top](#table-of-contents)
 
 ### Handling msp-files
 This section reports some ideas to work with mass spectra (msp) files 
@@ -144,6 +145,7 @@ if (is.data.frame(msp_as_df) & all(colnames(msp_as_df) == c("Name", "Comments", 
    return(msp_as_df) }
 }
 ```
+[Back to top](#table-of-contents)
 
 #### Plot Spectra from msp-data style
 
