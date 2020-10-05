@@ -14,9 +14,10 @@
 
 ### Data processing
 
-This section reports some potential tools to process the data
+This section reports some potential tools to process the data in R.
 
 #### Split long metabolite names
+Usually you don't want to work with the full database ID but with a shorter metabolite name. To do this you can shorten the obtained metabolite identification at the first (or better the second) underscore.
 
 ```R
   ###   This script illustrate different approaches to focus on the relevant metabolite information
@@ -71,6 +72,7 @@ This section reports some potential tools to process the data
 This section reports some ideas to work with mass spectra (msp) files 
 
 #### Read msp-files
+This function allows to import msp-files into R for further processing. It reads msp files and generates a dataframe. As the structure can be very different the names are extracted and put in the first column, the spectra in the third and the comments (everything in between) into the second column.  
 
 ```R
 #
