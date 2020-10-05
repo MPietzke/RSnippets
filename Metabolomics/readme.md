@@ -63,6 +63,7 @@ Usually you don't want to work with the full database ID but with a shorter meta
   # Clearly this only works when "_RI:" is there   
    data_sep4 = separate(data, Compound, into = c("Name", "Details"), sep = "_(?=RI:)") 
 ```
+[back to top](#table-of-contents)
 
 ## Handling msp-files
 This section reports some ideas to work with mass spectra (msp) files.  
@@ -141,6 +142,8 @@ if (is.data.frame(msp_as_df) & all(colnames(msp_as_df) == c("Name", "Comments", 
    return(msp_as_df) }
 }
 ```
+[back to top](#table-of-contents)
+
 
 ### Plot Spectra from msp-data style
 
@@ -207,6 +210,7 @@ plotspectra=function(stringfromMSP, mytitle="substance", print_plot=T, return_pl
   }
 }
 ```
+[back to top](#table-of-contents)
 
 ### msp-Viewer
 This is a Shiny app that allows to conveniently open msp files, convert it to table and view the contained mass spectra. So it doesn't need NISTMS or similar tools.
@@ -443,3 +447,4 @@ read_msp = function(inputfile) {
 # Run the application 
 shinyApp(ui = ui, server = server)
 ```
+[back to top](#table-of-contents)
