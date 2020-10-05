@@ -6,7 +6,7 @@
    * [Split long metabolite names](#Split-long-metabolite-names)
 * [Handling msp-files](#handling-msp-files)
    * [Read msp-files](#read-msp-files)
-   * [Plot Spectra from msp-data style](#plot-msp)
+   * [Plot Spectra from msp-data style](#Plot-Spectra-from-msp-data-style)
    * [msp-Viewer](#msp-viewer)
 
 ## Data processing
@@ -157,8 +157,8 @@ if (is.data.frame(msp_as_df) & all(colnames(msp_as_df) == c("Name", "Comments", 
 #    normalize_Intensity  -
 #    upper_limit_mzrange  - allows to set a limit for the x-axis (numeric)
 
-plotspectra=function(stringfromMSP, mytitle="substance", print_plot=T, return_plot=F, return_dataframe=F, normalize_Intensity=TRUE,
-                     upper_limit_mzrange=0){
+plotspectra=function(stringfromMSP, mytitle="substance", print_plot=T, return_plot=F, 
+                     return_dataframe=F, normalize_Intensity=TRUE, upper_limit_mzrange=0){
  #organize error handling
  if(return_plot & return_dataframe){
     print("please decide if you want either the data frame or the plot returned, the plot can be printed anyways")
