@@ -6,7 +6,7 @@
    * [Split long metabolite names](#Split-long-metabolite-names)
 * [Handling msp-files](#handling-msp-files)
    * [Read msp-files](#read-msp-files)
-   * [Convert msp-data style to dataframe](#convert-msp-data-style-to-dataframe
+   * [Convert msp-data style to dataframe](#convert-msp-data-style-to-dataframe)
    * [Plot Spectra from msp-data style](#plot-Spectra-from-msp-data-style)
    * [msp-Viewer](#msp-viewer)
 
